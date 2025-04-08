@@ -34,7 +34,7 @@ include '.includes/toast_notification.php';
                                 $index = 1; // Variabel untuk nomor urut
                                 /* Query untuk mengambil data dari tabel buku, anggota, dan peminjaman */
                                 $query = "SELECT peminjaman.*, anggota.anggota_id, anggota.namaLengkap,
-                                peminjaman.peminjaman_id FROM peminjaman
+                                peminjaman.peminjaman_id, buku.* FROM peminjaman
                                 INNER JOIN anggota ON peminjaman.anggota_id = anggota.anggota_id
                                 INNER JOIN buku ON peminjaman.buku_id = buku.id_buku
                                 WHERE peminjaman.anggota_id = " . ($_SESSION["anggota_id"] ??"");
@@ -47,7 +47,7 @@ include '.includes/toast_notification.php';
                                 <tr>
                                     <td><?= $index++; ?></td>
                                     <td><?= $row['peminjaman_id']; ?></td>
-                                    <td><?= $row['nama_anggota']; ?></td>
+                                    <td><?= $row['namaLengkap']; ?></td>
                                     <td><?= $row['judul_buku']; ?></td>
                                     <td><?= $row['tgl_peminjaman']; ?></td>
                                     <td><?= $row['tgl_kembali']; ?></td>
