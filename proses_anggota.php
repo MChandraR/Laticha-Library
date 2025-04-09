@@ -40,12 +40,12 @@ if (isset($_POST['simpan'])) {
 }
 
 // Proses penghapusan postingan
-if (isset($_GET['id_buku'])) {
+if (isset($_GET['anggota_id'])) {
     // Mengambil ID books dari paramenter URL
-    $booksID = $_GET['id_buku'];
+    $id = $_GET['anggota_id'];
 
     // Query untuk menghapus post berdasarkan ID
-    $exec = mysqli_query($conn, "DELETE FROM buku WHERE id_buku='$booksID'");
+    $exec = mysqli_query($conn, "DELETE FROM anggota WHERE anggota_id='$id'");
 
     // Menyimpan notifikasi kerberhasilan atau kegagalan ke dalam session
     if ($exec) {
@@ -61,7 +61,7 @@ if (isset($_GET['id_buku'])) {
     }
 
     // Redirect kembali ke dalam halaman dashboard
-    header('Location: buku.php');
+    header('Location: anggota.php');
     exit();
 }
 

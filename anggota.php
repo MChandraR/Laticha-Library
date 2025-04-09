@@ -50,7 +50,7 @@ include '.includes/header.php';
                                                     <i class="bx bx-edit-alt me-2"></i> Edit
                                                 </a>
                                                 <!-- Pilihan Delete -->
-                                                <a href="proses_books.php?id_buku=<?= $row['anggota_id'];?>" class="dropdown-item" >
+                                                <a href="proses_anggota.php?anggota_id=<?= $row['anggota_id'];?>" class="dropdown-item" >
                                                     <i class="bx bx-trash me-2"></i> Delete
                                                 </a>
                                             </div>
