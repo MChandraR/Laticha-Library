@@ -68,16 +68,20 @@ if (isset($_GET['id_buku'])) {
 // Menangani pembaruan data postingan
 if (isset($_POST['update'])) {
     // Mendapatkan data dart form
-    $id = $_POST['id_buku'];
-    $judul = $_POST["judul_buku"];
-    $penulis = $_POST["penulis"];
-    $tahun_publikasi = $_POST["tahun_publikasi"];
+    $id = $_POST['anggota_id'];
+    $nama = $_POST["namaLengkap"];
+    $email = $_POST["email"];
+    $pass = $_POST["password"];
 
     
     // Update data postingan di database
-    $queryUpdate = "UPDATE buku SET judul_buku = '$judul',
-        penulis = '$penulis', tahun_publikasi = $tahun_publikasi
-        WHERE id_buku = $id";
+    if($pass != ""){
+        $queryUpdate = "UPDATE anggota SET namaLengkap = '$nama', email = '$email'
+        password = '$pass' WHERE anggota_id = $id";
+    }else{
+        $queryUpdate = "UPDATE anggota SET namaLengkap = '$nama', email = '$email'
+        WHERE anggota_id = $id";
+    }
         
     if ($conn->query($queryUpdate) === TRUE) {
         // Notifikasi berhasil
@@ -94,6 +98,6 @@ if (isset($_POST['update'])) {
     }
 
     // Arahkan ke halaman dashboard
-    header('Location: buku.php');
+    header('Location: anggota.php');
     exit();
 }

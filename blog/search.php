@@ -1,5 +1,29 @@
 <?php
 // index.php
+
+
+include "../config.php";
+
+$data = [];
+$key = $_GET["key"]??"";
+$query = "SELECT * FROM buku WHERE LOWER(judul_buku) LIKE LOWER(?)";
+
+$stmt = $conn->prepare($query);
+
+// Menambahkan parameter untuk query
+$key = "%" . $key . "%";
+$stmt->bind_param("s", $key);
+
+// Menjalankan query
+$stmt->execute();
+
+// Mendapatkan hasil
+$result = $stmt->get_result();
+
+
+$data = $result;
+
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -22,7 +46,7 @@
     /* Hero Section */
     .hero {
       background: url('assets/library-bg.jpg') no-repeat center center/cover;
-      min-height: 80vh;
+      min-height: 95vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -90,6 +114,60 @@
       padding: 20px;
       text-align: center;
     }
+
+    .book-list{
+      display : flex;
+      gap : 1rem;
+      margin : 2rem 0;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        overflow: hidden;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .card p {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .card .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+    .card .btn:hover {
+        background-color: #0056b3;
+    }
+
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .hero h1 {
@@ -104,63 +182,42 @@
 <body>
 
 <?php
-  include "navbar.php"
+include "navbar.php"
 ?>
 
 <!-- HERO SECTION -->
 <section class="hero">
   <h1>Selamat Datang di LatichaLibrary</h1>
   <p>Pinjam mudah, baca puas, kembali tepat!</p>
-  <a href="search.php" class="btn">Cari buku favoritmu </a>
-</section>
 
-<!-- ABOUT SECTION -->
-<section id="about" class="content-section">
-  <div class="container text-center">
-    <h2>Tentang Kami</h2>
-    <p>LatichaLibrary adalah platform inovatif yang memudahkan proses peminjaman dan pengembalian buku secara online. Nikmati kemudahan mengakses koleksi buku dan kelola transaksi dengan sistem yang sederhana, aman, dan cepat.</p>
-  </div>
-</section>
+  <h3> Cari buku :  </h3>
+  <form action="search.php" method="GET">
+    <input type="text" name="key" value="<?=$_GET["key"]??""?>">
+  </form>
 
-<!-- FEATURES SECTION -->
-<section id="features" class="content-section bg-white">
-  <div class="container text-center">
-    <h2>Fitur Unggulan</h2>
-    <div class="row features mt-4">
-      <div class="col-md-4 mb-4">
-        <div class="feature-box p-4">
-          <img src="https://img.icons8.com/fluency/96/ffffff/book.png" alt="Peminjaman Buku">
-          <h4 class="mt-3">Peminjaman Buku Online</h4>
-          <p>Proses peminjaman yang cepat tanpa harus antri.</p>
-        </div>
+  <div class="book-list">
+    <?php
+
+    foreach( $data as $row){
+
+      ?>
+      <div class="card">
+          <img src="/latichalibrary/assets/img/icons/book.png" alt="Sampul Buku">
+          <h3><?= htmlspecialchars($row['judul_buku']) ?></h3>
+          <p>Penulis: <?= htmlspecialchars($row['penulis']) ?></p>
+          <a href="pinjam.php?id_buku=<?= $row['id_buku'] ?>" class="btn">Pinjam</a>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="feature-box p-4">
-          <img src="https://img.icons8.com/color/96/ffffff/return-book.png" alt="Pengembalian Buku">
-          <h4 class="mt-3">Pengembalian Buku Cepat</h4>
-          <p>Sistem pengembalian yang efisien dan real-time.</p>
-        </div>
-      </div>
-      <a class="col-md-4 mb-4" href="search.php">
-        <div class="feature-box p-4">
-          <img src="https://img.icons8.com/fluency/96/ffffff/search.png" alt="Pencarian Buku">
-          <h4 class="mt-3">Pencarian Buku Cepat</h4>
-          <p>Temukan buku favoritmu dengan fitur pencarian yang intuitif.</p>
-        </div>
-      </a>
-    </div>
-  </div>
+
+      <?php
+    }
+    ?>
+  <div>
 </section>
 
-<!-- CONTACT SECTION -->
-<section id="contact" class="content-section">
-  <div class="container text-center">
-    <h2>Kontak kami</h2>
-    <p>Untuk informasi lebih lanjut, hubungi saja kami karena kebetulan kami masi pengangguran</p>
-     <p> - email: info@latichalibrary.com </p>  
-     <p> - telepon: (+62) 82124134714</p> 
-  </div>
-</section>
+
+<section>
+
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
