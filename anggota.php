@@ -1,31 +1,23 @@
 <?php
-include (".includes/header.php");
-$title = "Dashboard";
-// Menyertakan file untuk menampilkan notifikasi (jika ada)
-include '.includes/toast_notification.php';
+// Menyertakan keader halaman
+include 'config.php';
+include '.includes/header.php';
+
 ?>
 <div class="container-xxl flex-grow-1 container-p-y">
-    <!-- Card untuk menampilkan tabel peminjaman -->
-    <div class="card">
-        <!-- Tabel dengan baris yang dapat di-hover -->
-        <div class="card">
-            <!-- Header Tabel -->
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h4>Semua Aktivitas</h4>
-            </div>
-            <div class="card-body">
-                <!-- Tabel responsif -->
+    <!-- Judul halaman -->
+     <div class="row">
+        <!-- Form untuk menambahkan postingan baru -->
+         <div class="col-md-10">
+            <div class="card mb-4">
+                <div class="card-body" >
                 <div class="table-responsive text-nowrap">
                     <table id="datatable" class="table table-hover">
                         <thead>
                             <tr class="text-center">
-                                <th>ID Peminjaman</th>
-                                <th>Nama Anggota</th>
-                                <th>Judul Buku</th>
-                                <th>Tanggal Peminjaman</th>
-                                <th>Tanggal Pengembalian</th>
-                                <th>Denda</th>
-                                <th>Status</th>
+                                <th>ID Anggota</th>
+                                <th>Nama Lengkap</th>
+                                <th>Email</th>
                                 <th with="150px">Pilihan</th>
                             </tr>
                         </thead>
@@ -34,11 +26,7 @@ include '.includes/toast_notification.php';
                             <?php
                                 $index = 1; // Variabel untuk nomor urut
                                 /* Query untuk mengambil data dari tabel buku, anggota, dan peminjaman */
-                                $query = "SELECT peminjaman.*, anggota.anggota_id, anggota.namaLengkap,
-                                peminjaman.peminjaman_id, buku.* FROM peminjaman
-                                INNER JOIN anggota ON peminjaman.anggota_id = anggota.anggota_id
-                                INNER JOIN buku ON peminjaman.buku_id = buku.id_buku
-                                WHERE peminjaman.anggota_id = " . ($_SESSION["anggota_id"] ??"");
+                                $query = "SELECT*FROM anggota";
                                 // Eksekusi query
                                 $exec = mysqli_query($conn, $query);
 
@@ -46,13 +34,9 @@ include '.includes/toast_notification.php';
                                 while ($row = mysqli_fetch_assoc($exec)) :
                             ?>
                                 <tr>
-                                    <td><?= $row['peminjaman_id']; ?></td>
+                                    <td><?= $row['anggota_id']; ?></td>
                                     <td><?= $row['namaLengkap']; ?></td>
-                                    <td><?= $row['judul_buku']; ?></td>
-                                    <td><?= $row['tgl_peminjaman']; ?></td>
-                                    <td><?= $row['tgl_dikembalikan']; ?></td>
-                                    <td><?= $row['denda']; ?></td>
-                                    <td><?= $row['status']; ?></td>
+                                    <td><?= $row['email']; ?></td>
                                     <td>
                                         <div class="dropdown">
                                             <!-- Tombol dropdown untuk Pilihan -->
@@ -62,11 +46,11 @@ include '.includes/toast_notification.php';
                                             <!-- Menu dropdown -->
                                             <div class="dropdown-menu">
                                                 <!-- Pilihan Edit -->
-                                                <a href="edit_books.php?books_id=<?= $books['id_books']; ?>" class="dropdown-item">
+                                                <a href="edit_anggota.php?anggota_id=<?= $row['anggota_id']; ?>" class="dropdown-item">
                                                     <i class="bx bx-edit-alt me-2"></i> Edit
                                                 </a>
                                                 <!-- Pilihan Delete -->
-                                                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deletebooks_<?= $bookst['id_books']; ?>">
+                                                <a href="proses_books.php?id_buku=<?= $row['anggota_id'];?>" class="dropdown-item" >
                                                     <i class="bx bx-trash me-2"></i> Delete
                                                 </a>
                                             </div>
@@ -100,12 +84,12 @@ include '.includes/toast_notification.php';
                         </tbody>
                     </table>
                 </div>
+                </div>
             </div>
         </div>
-        <!-- Akhir tabel dengan baris yang dapat di-hover -->
     </div>
 </div>
-
 <?php
-include (".includes/footer.php");
+// Menyertakan footer halaman
+include '.includes/footer.php';
 ?>

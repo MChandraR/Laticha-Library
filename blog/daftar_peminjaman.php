@@ -186,6 +186,7 @@ include "navbar.php"
 <!-- CONTENT -->
   <div  style="margin : 10rem 5rem;">
     <h2>Daftar Buku yang Dipinjam</h2>
+    <p>Harap kembalikan buku tepat waktu, pengembalian yang melewati batas waktu akan dikenakan denda sebesar 5000 perhari</p>
     <div class="table-responsive">
       <table class="table table-striped table-bordered align-middle" style="width : 100%;">
         <thead class="table-primary text-center">
@@ -207,7 +208,19 @@ include "navbar.php"
               <td><?= htmlspecialchars($data['tgl_peminjaman']) ?></td>
               <td><?= htmlspecialchars($data['tgl_kembali']) ?></td>
               <td style="display : flex; align-items : center; justify-content : center;">
-                <button>Kembalikan</button>
+               <?php
+               if($data['status'] == "dipinjam"){
+                ?>
+                <a href="pengembalian.php?id_peminjaman=<?=$data['peminjaman_id']?>&tanggal=<?=$data['tgl_kembali']?>">
+                  <button>Kembalikan</button>
+                </a>
+                <?php
+                }
+                else {
+                  ?>
+                    <button style="background-color : grey" disabled>Dikembalikan</button>
+                  <?php
+                }?>
               </td>
             </tr>
           <?php endforeach ?>

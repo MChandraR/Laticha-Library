@@ -10,7 +10,7 @@
         <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
         <li class="nav-item"><a class="nav-link" href="#features">Fitur</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
-        <li class="nav-item"><a class="nav-link" href="daftar_pinjaman.php">Daftar Peminjaman</a></li>
+        <li class="nav-item"><a class="nav-link" href="daftar_peminjaman.php">Daftar Peminjaman</a></li>
       </ul>
     </div>
   </div>

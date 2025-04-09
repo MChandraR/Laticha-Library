@@ -18,7 +18,7 @@ $stmt->bind_param("ssss",$anggota_id, $id_buku, $tanggal_pinjam, $tanggal_pengem
 
 if ($stmt->execute()) {
     echo "Peminjaman buku berhasil!";
-    header('Location: search.php');
+    header('Location: daftar_peminjaman.php');
 
 } else {
     echo "Terjadi kesalahan: " . $stmt->error;
