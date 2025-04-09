@@ -11,13 +11,13 @@ $userId = $_SESSION["anggota_id"];
 // Mendapatkan form untuk menambahkan postingan baru
 if (isset($_POST['simpan'])) {
     // Mendapatkan data dari form
-    $judulBuku = $_POST["judulBuku"]; // Judul postingan
-    $penulis = $_POST["penulis"]; // Konten postingan
-    $tahun_publikasi = $_POST["tahun_publikasi"]; // ID aktivitas
-   
+    $nama = $_POST["namaLengkap"]; // Judul postingan
+    $email = $_POST["email"]; // Konten postingan
+    $pass = $_POST["password"]; // ID aktivitas
+    $pass = password_hash($pass, PASSWORD_DEFAULT);
     // Jika unggahan berhasil, masukkan
     // data postingan ke dalam database
-    $query = "INSERT INTO buku (judul_buku, penulis, tahun_publikasi) VALUES ('$judulBuku', '$penulis', '$tahun_publikasi')";
+    $query = "INSERT INTO anggota VALUES (NULL, '$nama', '$email', '$pass')";
     if ($conn->query($query) === TRUE) {
         // Notifikasi berhasil jika postingan berhasil ditambahkan
         $_SESSION['notification'] = [
@@ -35,7 +35,7 @@ if (isset($_POST['simpan'])) {
     }
 
     // Arahkan ke halaman dashboard setelah selesai
-    header('Location: buku.php');
+    header('Location: anggota.php');
     exit();
 }
 
