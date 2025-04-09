@@ -9,7 +9,7 @@ include '.includes/header.php';
          <div class="col-md-10">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form method="POST" action="proses_books.php" enctype="multipart/form-data">
+                    <form method="POST" action="proses_anggota.php" enctype="multipart/form-data">
                         <!-- Input untuk judul postingan -->
                         <div class="mb-3">
                             <label for="books_title" class="form-tabel">Nama Lengkap</label>
