@@ -3,6 +3,14 @@ include (".includes/header.php");
 $title = "Dashboard";
 // Menyertakan file untuk menampilkan notifikasi (jika ada)
 include '.includes/toast_notification.php';
+
+$query = "SELECT COUNT(id_buku) as jumlah FROM buku;";
+$user_query = "SELECT COUNT(id_user) as jumlah FROM anggota;";
+$data_buku = mysqli_query($conn, $query);
+$data_user = mysqli_query($conn, $query);
+$buku_count =  $data_buku->fetch_assoc()["jumlah"] ?? 0;
+$anggota_count =  $data_user->fetch_assoc()["jumlah"] ?? 0;
+
 ?>
 <div class="container-xxl flex-grow-1 container-p-y">
     <!-- Card untuk menampilkan tabel peminjaman -->
@@ -39,14 +47,12 @@ include '.includes/toast_notification.php';
                 <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                 <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                     <div class="card-title">
-                    <h5 class="text-nowrap mb-2">Profile Report</h5>
+                    <h5 class="text-nowrap mb-2">Total Buku</h5>
                     <span class="badge bg-label-warning rounded-pill">Year 2021</span>
                     </div>
                     <div class="mt-sm-auto">
-                    <small class="text-success text-nowrap fw-semibold"
-                        ><i class="bx bx-chevron-up"></i> 68.2%</small
-                    >
-                    <h3 class="mb-0">$84,686k</h3>
+                 
+                    <h3 class="text-success mb-0"><?=$buku_count?> buku</h3>
                     </div>
                 </div>
                 <div id="profileReportChart"></div>
@@ -65,10 +71,8 @@ include '.includes/toast_notification.php';
                     <span class="badge bg-label-warning rounded-pill">Year 2021</span>
                     </div>
                     <div class="mt-sm-auto">
-                    <small class="text-success text-nowrap fw-semibold"
-                        ><i class="bx bx-chevron-up"></i> 68.2%</small
-                    >
-                    <h3 class="mb-0">$84,686k</h3>
+                  
+                    <h3 class="mb-0 text-warning"><?=$anggota_count?> orang</h3>
                     </div>
                 </div>
                 <div id="profileReportChart"></div>
