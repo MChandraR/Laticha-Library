@@ -6,8 +6,11 @@ include '.includes/toast_notification.php';
 
 $query = "SELECT COUNT(id_buku) as jumlah FROM buku;";
 $user_query = "SELECT COUNT(id_user) as jumlah FROM anggota;";
+$peminjaman_query = "SELECT COUNT(peminjaman_id) as jumlah FROM peminjaman;";
+$data_peminjaman = mysqli_query($conn, $peminjaman_query);
 $data_buku = mysqli_query($conn, $query);
 $data_user = mysqli_query($conn, $query);
+$peminjaman_count =  $data_peminjaman->fetch_assoc()["jumlah"] ?? 0;
 $buku_count =  $data_buku->fetch_assoc()["jumlah"] ?? 0;
 $anggota_count =  $data_user->fetch_assoc()["jumlah"] ?? 0;
 
@@ -72,7 +75,7 @@ $anggota_count =  $data_user->fetch_assoc()["jumlah"] ?? 0;
                     </div>
                     <div class="mt-sm-auto">
                  
-                    <h3 class="text-primary mb-0"><?=$buku_count?> peminjaman</h3>
+                    <h3 class="text-primary mb-0"><?=$peminjaman_count?> peminjaman</h3>
                     </div>
                 </div>
                 <div id="profileReportChart"></div>

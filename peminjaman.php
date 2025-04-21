@@ -37,8 +37,7 @@ include '.includes/toast_notification.php';
                                 $query = "SELECT peminjaman.*, anggota.anggota_id, anggota.namaLengkap,
                                 peminjaman.peminjaman_id, buku.* FROM peminjaman
                                 INNER JOIN anggota ON peminjaman.anggota_id = anggota.anggota_id
-                                INNER JOIN buku ON peminjaman.buku_id = buku.id_buku
-                                WHERE peminjaman.anggota_id = " . ($_SESSION["anggota_id"] ??"");
+                                INNER JOIN buku ON peminjaman.buku_id = buku.id_buku";
                                 // Eksekusi query
                                 $exec = mysqli_query($conn, $query);
 

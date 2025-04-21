@@ -8,7 +8,7 @@
 
   // Kode HTML Lainnya
 
-  if (isset($_SESSION["username"]) || isset($_SESSION["role"])) {
+  if (isset($_SESSION["username"]) && $_SESSION["role"] == "admin") {
     $_SESSION['notification'] = [
       'type' => 'danger',
       'message' => 'Silakan Logout Terlebih Dahulu!'
