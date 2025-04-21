@@ -7,7 +7,11 @@ include '.includes/header.php';
 <div class="container-xxl flex-grow-1 container-p-y">
     <!-- Judul halaman -->
             <div class="card mb-4">
+                
                 <div class="card-body" >
+                <h2 class="card-title text-primary">Daftar Buku</h2>
+                <br>
+
                 <div class="table-responsive text-nowrap">
                     <table id="datatable" class="table table-hover">
                         <thead>

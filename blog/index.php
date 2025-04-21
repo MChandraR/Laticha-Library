@@ -22,14 +22,12 @@
     /* Hero Section */
     .hero {
       background: url('assets/library-bg.jpg') no-repeat center center/cover;
-      min-height: 80vh;
+      min-height: 95dvh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: #rgba;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
-      padding: 0 20px;
+      padding: 4rem 20px;
     }
     .hero h1 {
       font-size: 3rem;
@@ -85,7 +83,7 @@
     }
     /* Footer */
     .footer {
-      background-color:rgba(70, 105, 187, 0.85);
+      background-color : #696cff;
       color: #fff;
       padding: 20px;
       text-align: center;
@@ -109,15 +107,32 @@
 
 <!-- HERO SECTION -->
 <section class="hero">
-  <h1>Selamat Datang di LatichaLibrary</h1>
-  <p>Pinjam mudah, baca puas, kembali tepat!</p>
-  <a href="search.php" class="btn">Cari buku favoritmu </a>
+  <h1 style="font-size : 4rem; font-weight : bold; color : #696cff;">Selamat Datang di LatichaLibrary</h1>
+  <p style="font-size : 1.5rem;">Pinjam mudah, baca puas, kembali tepat!</p>
+  <a href="search.php" style="background-color :  #696cff !important; color : white; " class="btn">Cari buku favoritmu </a>
+
+  <div style="position : absolute ; bottom : 7rem; display : flex; gap : 1rem;">
+    <a href="#about">
+      <img src="../assets/img/icons/info-purple.png" style="width : 2rem;" alt="">
+    </a>
+
+   <h3 style="color :  #696cff;">Scroll untuk info lainnya </h3>
+
+    <a href="#about">
+      <img src="../assets/img/icons/info-purple.png" style="width : 2rem;" alt="">
+    </a>
+  </div>
+
+  <!-- <div style="position : absolute ; bottom : 1rem;">
+    <h3>More info</h3>
+  </div> -->
+
 </section>
 
 <!-- ABOUT SECTION -->
-<section id="about" class="content-section">
+<section id="about" class="content-section" style="padding-top : 10rem;">
   <div class="container text-center">
-    <h2>Tentang Kami</h2>
+    <h2 style="color : #696cff !important; font-weight : bold;">Tentang Kami</h2>
     <p>LatichaLibrary adalah platform inovatif yang memudahkan proses peminjaman dan pengembalian buku secara online. Nikmati kemudahan mengakses koleksi buku dan kelola transaksi dengan sistem yang sederhana, aman, dan cepat.</p>
   </div>
 </section>
@@ -125,22 +140,22 @@
 <!-- FEATURES SECTION -->
 <section id="features" class="content-section bg-white">
   <div class="container text-center">
-    <h2>Fitur Unggulan</h2>
+    <h2 style="color : #696cff !important; font-weight : bold;">Fitur Unggulan</h2>
     <div class="row features mt-4">
-      <div class="col-md-4 mb-4">
-        <div class="feature-box p-4">
+      <a class="col-md-4 mb-4" href="search.php">
+      <div class="feature-box p-4">
           <img src="https://img.icons8.com/fluency/96/ffffff/book.png" alt="Peminjaman Buku">
           <h4 class="mt-3">Peminjaman Buku Online</h4>
           <p>Proses peminjaman yang cepat tanpa harus antri.</p>
         </div>
-      </div>
-      <div class="col-md-4 mb-4">
+      </a>
+      <a class="col-md-4 mb-4" href="daftar_peminjaman.php">
         <div class="feature-box p-4">
           <img src="https://img.icons8.com/color/96/ffffff/return-book.png" alt="Pengembalian Buku">
           <h4 class="mt-3">Pengembalian Buku Cepat</h4>
           <p>Sistem pengembalian yang efisien dan real-time.</p>
         </div>
-      </div>
+      </a>
       <a class="col-md-4 mb-4" href="search.php">
         <div class="feature-box p-4">
           <img src="https://img.icons8.com/fluency/96/ffffff/search.png" alt="Pencarian Buku">
@@ -155,7 +170,7 @@
 <!-- CONTACT SECTION -->
 <section id="contact" class="content-section">
   <div class="container text-center">
-    <h2>Kontak kami</h2>
+    <h2 style="color : #696cff !important; font-weight : bold;">Kontak kami</h2>
     <p>Untuk informasi lebih lanjut, hubungi saja kami karena kebetulan kami masi pengangguran</p>
      <p> - email: info@latichalibrary.com </p>  
      <p> - telepon: (+62) 82124134714</p> 

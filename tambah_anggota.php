@@ -6,6 +6,8 @@ include '.includes/header.php';
     <!-- Judul halaman -->
     <div class="card mb-4">
         <div class="card-body">
+        <h2 class="card-title text-primary">Tambah Data Anggota</h2>
+        <br>
             <form method="POST" action="proses_anggota.php" enctype="multipart/form-data">
                 <!-- Input untuk judul postingan -->
                 <div class="mb-3">

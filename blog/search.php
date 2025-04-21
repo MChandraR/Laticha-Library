@@ -6,8 +6,12 @@ include "../config.php";
 
 $data = [];
 $key = $_GET["key"]??"";
-$query = "SELECT * FROM buku WHERE LOWER(judul_buku) LIKE LOWER(?)";
+$page = max($_GET['page']??1, 1);
+$query = "SELECT * FROM buku WHERE LOWER(judul_buku) LIKE LOWER(?) LIMIT 10 OFFSET ". ( ($page-1) * 10) . ";";
+$count = "SELECT COUNT(id_buku) AS count from buku;";
 
+$count = mysqli_query($conn, $count);
+$count = mysqli_fetch_assoc($count);
 $stmt = $conn->prepare($query);
 
 // Menambahkan parameter untuk query
@@ -52,7 +56,6 @@ $data = $result;
       justify-content: center;
       align-items: center;
       color: #rgba;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
       padding: 0 20px;
     }
     .hero h1 {
@@ -109,7 +112,7 @@ $data = $result;
     }
     /* Footer */
     .footer {
-      background-color:rgba(70, 105, 187, 0.85);
+      background-color : #696cff;
       color: #fff;
       padding: 20px;
       text-align: center;
@@ -117,8 +120,9 @@ $data = $result;
 
     .book-list{
       display : flex;
+      width : 75%;
       gap : 1rem;
-      margin : 2rem 0;
+      margin : 4rem 0;
     }
     .container {
         display: flex;
@@ -131,7 +135,7 @@ $data = $result;
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 200px;
+        width: 20%;
         overflow: hidden;
         text-align: center;
         padding: 10px;
@@ -167,6 +171,30 @@ $data = $result;
         background-color: #0056b3;
     }
 
+    .pagination{
+      width : 75%;
+      justify-content : start;
+      align-items : center;
+      gap : 1rem;
+      padding : 1rem;
+      margin-bottom : 5rem;
+
+    }
+
+    .pagination button{
+      border-color : #696cff;
+      color : #696cff;
+      background-color : white;
+      border-radius: .2rem;
+      font-weight : bold;
+      padding : .5rem 2rem;
+    }
+
+    .pagination span{
+      color : #696cff;
+      font-weight : bold; 
+      font-size : 1.2rem;
+    }
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
@@ -186,13 +214,13 @@ include "navbar.php"
 ?>
 
 <!-- HERO SECTION -->
-<section class="hero">
-  <h1>Selamat Datang di LatichaLibrary</h1>
+<section class="hero" style="padding-top : 10rem;">
+  <h1 style="color : #696cff; font-weight : bold;">Selamat Datang di LatichaLibrary</h1>
   <p>Pinjam mudah, baca puas, kembali tepat!</p>
 
-  <h3> Cari buku :  </h3>
-  <form action="search.php" method="GET">
-    <input type="text" name="key" value="<?=$_GET["key"]??""?>">
+  <h3 style="color : #696cff; margin-top : 1rem;"> Cari buku :  </h3>
+  <form action="search.php" method="GET" style="width : 15%;">
+    <input class="form-control" type="text" name="key" placeholder="Tekan enter untuk mencari " value="<?=$_GET["key"]??""?>">
   </form>
 
   <div class="book-list">
@@ -202,9 +230,9 @@ include "navbar.php"
 
       ?>
       <div class="card">
-          <img src="/latichalibrary/assets/img/icons/book.png" alt="Sampul Buku">
-          <h3><?= htmlspecialchars($row['judul_buku']) ?></h3>
-          <p>Penulis: <?= htmlspecialchars($row['penulis']) ?></p>
+          <img src="/latichalibrary/assets/img/icons/book2.png" alt="Sampul Buku">
+          <h3 style="color  : #696cff; font-weight : bold; font-size : 1.5rem;" ><?= htmlspecialchars($row['judul_buku']) ?></h3>
+          <p style="font-size : 1rem;" >Penulis: <?= htmlspecialchars($row['penulis']) ?></p>
           <a href="pinjam.php?id_buku=<?= $row['id_buku'] ?>" class="btn">Pinjam</a>
       </div>
 
@@ -212,8 +240,20 @@ include "navbar.php"
     }
     ?>
   <div>
-</section>
 
+  
+</section>
+<center>
+  <div class="pagination">
+    <a href="search.php?page=<?=max(0, ($_GET['page']??0) -1)?>">
+      <button>Prev</button>
+    </a>
+    <a href="search.php?page=<?=($_GET['page']??0) +1?>">
+      <button>Next</button>
+    </a>
+    <span> Halaman : <?=$_GET["page"]??1?> </span>
+  </div>
+</center>
 
 <section>
 

@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="font-family : Arial, serif;">
+<script src="../assets/js/sweetalert2.all.min.js
+"></script>
+<link href="../assets/js/sweetalert2.min.css
+" rel="stylesheet">
+
+
 <?php
 // proses_pengembalian.php
 
@@ -31,8 +45,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id_peminjaman"])) {
 
     if (mysqli_query($conn, $update)) {
       echo "<script>
-              alert('Buku berhasil dikembalikan. Keterlambatan: $terlambat hari. Denda: Rp " . number_format($denda, 0, ',', '.') . "');
-              window.location='daftar_peminjaman.php';
+            async function confirm(){
+              let confirm = await Swal.fire({
+                title: 'Berhasil mengembalikan buku !',
+                text: 'Buku berhasil dikembalikan. Keterlambatan: ".$terlambat." hari. Denda: Rp " . number_format($denda, 0, ',', '.') . "',
+                icon: 'info'
+              });
+
+                window.location='daftar_peminjaman.php';
+
+             }
+
+             confirm();
+
+              
+              //alert('Buku berhasil dikembalikan. Keterlambatan: $terlambat hari. Denda: Rp ` . number_format($denda, 0, ',', '.') . `');
             </script>";
     } else {
       echo "<script>alert('Gagal mengupdate data.'); history.back();</script>";
@@ -44,3 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id_peminjaman"])) {
   mysqli_close($conn);
 }
 ?>
+
+</body>
+</html>
