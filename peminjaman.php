@@ -61,11 +61,11 @@ include '.includes/toast_notification.php';
                                             <!-- Menu dropdown -->
                                             <div class="dropdown-menu">
                                                 <!-- Pilihan Edit -->
-                                                <a href="edit_books.php?books_id=<?= $books['id_books']; ?>" class="dropdown-item">
+                                                <a href="edit_peminjaman.php?peminjaman_id=<?= $row['peminjaman_id']; ?>" class="dropdown-item">
                                                     <i class="bx bx-edit-alt me-2"></i> Edit
                                                 </a>
                                                 <!-- Pilihan Delete -->
-                                                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deletebooks_<?= $bookst['id_books']; ?>">
+                                                <a href="proses_peminjaman.php?peminjaman_id=<?= $row['peminjaman_id']?> " class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deletebooks_<?= $bookst['id_books']; ?>">
                                                     <i class="bx bx-trash me-2"></i> Delete
                                                 </a>
                                             </div>
