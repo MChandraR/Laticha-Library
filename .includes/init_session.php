@@ -11,7 +11,7 @@ if ($notification) {
 
 /* Periksa apakah sesi email dan role sudah ada,
 jika tidak arahkan ke halaman login */
-if (empty($_SESSION["email"]) ) {
+if (empty($_SESSION["email"]) || $_SESSION["role"] != "admin") {
   $_SESSION['notification'] = [
     'type' => 'danger',
     'message' => 'Silakan Login Terlebih Dahulu!'

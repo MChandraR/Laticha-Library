@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"]  ;
 
-    $sql = "SELECT * FROM anggota WHERE email='$email'";
+    $sql = "SELECT * FROM admin WHERE email='$email'";
     $result = $conn->query($sql);
 
 
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
           $_SESSION["email"] = $email;
           $_SESSION["namaLengkap"] = $row["namaLengkap"];
-          // $_SESSION["role"] = $row["role"];
+          $_SESSION["role"] = "admin";
           $_SESSION["anggota_id"] = $row["anggota_id"];
           // Set notifikasi selamat datang
           $_SESSION['notification'] = [
