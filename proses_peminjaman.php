@@ -64,12 +64,12 @@ if (isset($_POST['simpan'])) {
 }
 
 // Proses penghapusan postingan
-if (isset($_GET['anggota_id'])) {
+if (isset($_GET['peminjaman_id'])) {
     // Mengambil ID books dari paramenter URL
-    $id = $_GET['anggota_id'];
+    $id = $_GET['peminjaman_id'];
 
     // Query untuk menghapus post berdasarkan ID
-    $exec = mysqli_query($conn, "DELETE FROM anggota WHERE anggota_id='$id'");
+    $exec = mysqli_query($conn, "DELETE FROM peminjaman WHERE peminjaman_id='$id'");
 
     // Menyimpan notifikasi kerberhasilan atau kegagalan ke dalam session
     if ($exec) {
@@ -85,27 +85,26 @@ if (isset($_GET['anggota_id'])) {
     }
 
     // Redirect kembali ke dalam halaman dashboard
-    header('Location: anggota.php');
+    header('Location: peminjaman.php');
     exit();
 }
 
 // Menangani pembaruan data postingan
 if (isset($_POST['update'])) {
     // Mendapatkan data dart form
-    $id = $_POST['anggota_id'];
-    $nama = $_POST["namaLengkap"];
-    $email = $_POST["email"];
-    $pass = $_POST["password"];
+    $id = $_POST['peminjaman_id'];
+    $buku_id = $_POST["buku_id"];
+    $tgl_peminjaman = $_POST["tgl_peminjaman"];
+    $tgl_kembali = $_POST["tgl_kembali"];
+    $tgl_dikembalikan = $_POST["tgl_dikembalikan"];
+    $denda = $_POST["denda"];
+    $status = $_POST["status"];
 
     
-    // Update data postingan di database
-    if($pass != ""){
-        $queryUpdate = "UPDATE anggota SET namaLengkap = '$nama', email = '$email'
-        password = '$pass' WHERE anggota_id = $id";
-    }else{
-        $queryUpdate = "UPDATE anggota SET namaLengkap = '$nama', email = '$email'
-        WHERE anggota_id = $id";
-    }
+
+    $queryUpdate = "UPDATE peminjaman SET buku_id = '$buku_id', tgl_peminjaman = '$tgl_peminjaman', tgl_kembali = '$tgl_kembali', tgl_dikembalikan = '$tgl_dikembalikan', denda = '$denda', status = '$status'
+    WHERE peminjaman_id = $id";
+    
         
     if ($conn->query($queryUpdate) === TRUE) {
         // Notifikasi berhasil
@@ -122,6 +121,6 @@ if (isset($_POST['update'])) {
     }
 
     // Arahkan ke halaman dashboard
-    header('Location: anggota.php');
+    header('Location: peminjaman.php');
     exit();
 }

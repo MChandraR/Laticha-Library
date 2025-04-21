@@ -1,4 +1,5 @@
-<?php include(".layouts/header.php"); ?>
+<?php include(".layouts/header.php"); 
+include("../.includes/toast_notification.php")?>
 <!-- Register Card -->
 <div class="card">
   <div class="card-body">

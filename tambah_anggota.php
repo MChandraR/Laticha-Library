@@ -1,6 +1,8 @@
 <?php
 // Menyertakan keader halaman
 include '.includes/header.php';
+include '.includes/toast_notification.php';
+
 ?>
 <div class="container-xxl flex-grow-1 container-p-y">
     <!-- Judul halaman -->
