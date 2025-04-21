@@ -25,12 +25,12 @@ $anggota_count =  $data_user->fetch_assoc()["jumlah"] ?? 0;
             <div class="table-responsive text-nowrap">
             <div class="col-sm-7">
                     <div class="card-body">
-                        <h2 class="card-title text-primary">Selamat datang di menu Admin</h2>
+                        <h2 class="card-title text-primary" style="font-weight : bold;">Selamat datang di menu Admin</h2>
                         <p class="mb-4" style="font-size : 1.2rem;">
                         Silahkan akses menu admin dari side bar yang ada di kiri !
                         </p>
 
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+                        <a href="peminjaman.php" class="btn btn-sm btn-outline-primary">Lihat Peminjaman</a>
                     </div>
                     </div>
             </div>
@@ -47,8 +47,8 @@ $anggota_count =  $data_user->fetch_assoc()["jumlah"] ?? 0;
                 <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                 <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                     <div class="card-title">
-                    <h5 class="text-nowrap mb-2">Total Buku</h5>
-                    <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                    <h5 class="text-nowrap mb-2">Data Buku</h5>
+                    <span class="badge bg-label-warning rounded-pill">Total</span>
                     </div>
                     <div class="mt-sm-auto">
                  
@@ -67,8 +67,28 @@ $anggota_count =  $data_user->fetch_assoc()["jumlah"] ?? 0;
                 <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                 <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                     <div class="card-title">
-                    <h5 class="text-nowrap mb-2">Profile Report</h5>
-                    <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                    <h5 class="text-nowrap mb-2">Data Peminjaman</h5>
+                    <span class="badge bg-label-warning rounded-pill">Total</span>
+                    </div>
+                    <div class="mt-sm-auto">
+                 
+                    <h3 class="text-primary mb-0"><?=$buku_count?> peminjaman</h3>
+                    </div>
+                </div>
+                <div id="profileReportChart"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="row-12 mb-4">
+            <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                    <div class="card-title">
+                    <h5 class="text-nowrap mb-2">Data Anggota</h5>
+                    <span class="badge bg-label-warning rounded-pill">Total</span>
                     </div>
                     <div class="mt-sm-auto">
                   

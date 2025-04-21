@@ -9,6 +9,8 @@ include '.includes/header.php';
      <div class="card">
         <!-- Form untuk menambahkan postingan baru -->
             <div class="card-body" >
+            <h2 class="card-title text-primary">Daftar Anggota</h2>
+            <br>
             <div class="table-responsive text-nowrap">
                 <table id="datatable" class="table table-hover">
                     <thead>
