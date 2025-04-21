@@ -108,9 +108,12 @@ $conn->close();
     }
     /* Footer */
     .footer {
-      background-color:rgba(70, 105, 187, 0.85);
+      background-color : #696cff;
       color: #fff;
       padding: 20px;
+      position : fixed ; 
+      width : 100%;
+      bottom : 0;
       text-align: center;
     }
 
@@ -178,14 +181,14 @@ $conn->close();
     }
   </style>
 </head>
-<body>
+<body style="min-height : 95vh;">
 
 <?php
 include "navbar.php"
 ?>
 
 
-<section>
+<section >
     <h2>Form Peminjaman Buku</h2>
 
     <form action="proses_peminjaman.php" method="POST">
@@ -212,7 +215,8 @@ include "navbar.php"
             </tr>
             <tr>
                 <td></td>
-                <td class="btn-row"><button type="submit">Pinjam Buku</button></td>
+                <td class="btn-row"><button type="submit" style="      background-color : #696cff;
+ font-weight : bold; color : white;">Pinjam Buku</button></td>
             </tr>
         </table>
     </form>

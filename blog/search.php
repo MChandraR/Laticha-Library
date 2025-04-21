@@ -6,8 +6,12 @@ include "../config.php";
 
 $data = [];
 $key = $_GET["key"]??"";
-$query = "SELECT * FROM buku WHERE LOWER(judul_buku) LIKE LOWER(?)";
+$page = max($_GET['page']??1, 1);
+$query = "SELECT * FROM buku WHERE LOWER(judul_buku) LIKE LOWER(?) LIMIT 10 OFFSET ". ( ($page-1) * 10) . ";";
+$count = "SELECT COUNT(id_buku) AS count from buku;";
 
+$count = mysqli_query($conn, $count);
+$count = mysqli_fetch_assoc($count);
 $stmt = $conn->prepare($query);
 
 // Menambahkan parameter untuk query
@@ -116,6 +120,7 @@ $data = $result;
 
     .book-list{
       display : flex;
+      width : 75%;
       gap : 1rem;
       margin : 4rem 0;
     }
@@ -166,6 +171,30 @@ $data = $result;
         background-color: #0056b3;
     }
 
+    .pagination{
+      width : 75%;
+      justify-content : start;
+      align-items : center;
+      gap : 1rem;
+      padding : 1rem;
+      margin-bottom : 5rem;
+
+    }
+
+    .pagination button{
+      border-color : #696cff;
+      color : #696cff;
+      background-color : white;
+      border-radius: .2rem;
+      font-weight : bold;
+      padding : .5rem 2rem;
+    }
+
+    .pagination span{
+      color : #696cff;
+      font-weight : bold; 
+      font-size : 1.2rem;
+    }
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
@@ -201,7 +230,7 @@ include "navbar.php"
 
       ?>
       <div class="card">
-          <img src="/latichalibrary/assets/img/icons/book.png" alt="Sampul Buku">
+          <img src="/latichalibrary/assets/img/icons/book2.png" alt="Sampul Buku">
           <h3 style="color  : #696cff; font-weight : bold; font-size : 1.5rem;" ><?= htmlspecialchars($row['judul_buku']) ?></h3>
           <p style="font-size : 1rem;" >Penulis: <?= htmlspecialchars($row['penulis']) ?></p>
           <a href="pinjam.php?id_buku=<?= $row['id_buku'] ?>" class="btn">Pinjam</a>
@@ -211,8 +240,20 @@ include "navbar.php"
     }
     ?>
   <div>
-</section>
 
+  
+</section>
+<center>
+  <div class="pagination">
+    <a href="search.php?page=<?=max(0, ($_GET['page']??0) -1)?>">
+      <button>Prev</button>
+    </a>
+    <a href="search.php?page=<?=($_GET['page']??0) +1?>">
+      <button>Next</button>
+    </a>
+    <span> Halaman : <?=$_GET["page"]??1?> </span>
+  </div>
+</center>
 
 <section>
 

@@ -142,20 +142,20 @@
   <div class="container text-center">
     <h2 style="color : #696cff !important; font-weight : bold;">Fitur Unggulan</h2>
     <div class="row features mt-4">
-      <div class="col-md-4 mb-4">
-        <div class="feature-box p-4">
+      <a class="col-md-4 mb-4" href="search.php">
+      <div class="feature-box p-4">
           <img src="https://img.icons8.com/fluency/96/ffffff/book.png" alt="Peminjaman Buku">
           <h4 class="mt-3">Peminjaman Buku Online</h4>
           <p>Proses peminjaman yang cepat tanpa harus antri.</p>
         </div>
-      </div>
-      <div class="col-md-4 mb-4">
+      </a>
+      <a class="col-md-4 mb-4" href="daftar_peminjaman.php">
         <div class="feature-box p-4">
           <img src="https://img.icons8.com/color/96/ffffff/return-book.png" alt="Pengembalian Buku">
           <h4 class="mt-3">Pengembalian Buku Cepat</h4>
           <p>Sistem pengembalian yang efisien dan real-time.</p>
         </div>
-      </div>
+      </a>
       <a class="col-md-4 mb-4" href="search.php">
         <div class="feature-box p-4">
           <img src="https://img.icons8.com/fluency/96/ffffff/search.png" alt="Pencarian Buku">

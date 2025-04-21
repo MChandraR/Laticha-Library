@@ -4,3 +4,5 @@
 
 
 <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Freepik - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/open-book" title="open book icons">Open book icons created by Karyative - Flaticon</a>

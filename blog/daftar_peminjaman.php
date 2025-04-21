@@ -108,12 +108,14 @@ $conn->close();
     }
     /* Footer */
     .footer {
-      background-color:rgba(70, 105, 187, 0.85);
+      background-color : #696cff;
       color: #fff;
       padding: 20px;
+      position : fixed ; 
+      width : 100%;
+      bottom : 0;
       text-align: center;
     }
-
     .book-list{
       display : flex;
       gap : 1rem;
@@ -185,7 +187,7 @@ include "navbar.php"
 
 <!-- CONTENT -->
   <div  style="margin : 10rem 5rem;">
-    <h2>Daftar Buku yang Dipinjam</h2>
+    <h2 style="color : #696cff; font-weight : bold;">Daftar Buku yang Dipinjam</h2>
     <p>Harap kembalikan buku tepat waktu, pengembalian yang melewati batas waktu akan dikenakan denda sebesar 5000 perhari</p>
     <div class="table-responsive">
       <table class="table table-striped table-bordered align-middle" style="width : 100%;">
