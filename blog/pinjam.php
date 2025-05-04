@@ -190,7 +190,7 @@ include "navbar.php"
 
 <section >
     <h2>Form Peminjaman Buku</h2>
-
+    <img src="../uploads/<?= $buku['sampul'] ?>" alt="Library Image" style="object-fit: cover; width : 100%; height : 40vh; margin-bottom : 2rem;">
     <form action="proses_peminjaman.php" method="POST">
         <table>
             <tr>

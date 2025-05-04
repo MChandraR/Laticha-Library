@@ -56,6 +56,12 @@ if ($result->num_rows > 0) {
                             <label for="formFile" class="form-tabel">Penulis</label>
                             <input class="form-control" type="text" name="penulis" value="<?=$post["penulis"]?>">
                         </div>
+
+
+                        <div class="mb-3">
+                            <label for="formFile" class="form-tabel">Sampul Buku</label>
+                            <input class="form-control" type="file" name="sampul" placeholder="Upload gambar sampul buku" accept="image/*" required>
+                        </div>
                     
                         <!-- Textarea untuk konten postingan -->
                         <div class="mb-3">
