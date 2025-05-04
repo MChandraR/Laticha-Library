@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 21, 2025 at 07:51 PM
+-- Generation Time: May 04, 2025 at 06:32 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -73,16 +73,19 @@ CREATE TABLE `buku` (
   `id_buku` int(11) NOT NULL,
   `judul_buku` varchar(100) NOT NULL,
   `penulis` varchar(100) NOT NULL,
-  `tahun_publikasi` year(4) DEFAULT NULL
+  `tahun_publikasi` year(4) DEFAULT NULL,
+  `sampul` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `buku`
 --
 
-INSERT INTO `buku` (`id_buku`, `judul_buku`, `penulis`, `tahun_publikasi`) VALUES
-(2, 'Si Kancil', 'Chandra', '2024'),
-(3, 'Laskar Pelangi', 'Andrea Hirata', '2000');
+INSERT INTO `buku` (`id_buku`, `judul_buku`, `penulis`, `tahun_publikasi`, `sampul`) VALUES
+(2, 'Si Kancil', 'Chandra', '2024', '20250504_062721.jpg'),
+(3, 'Laskar Pelangi', 'Andrea Hirata', '2000', '20250504_0626081.jpg'),
+(4, 'Hallo', 'Saya', '2000', '20250504_062608.jpg'),
+(5, 'Hallo', 'Saya', '2000', '20250504_062616.jpg');
 
 -- --------------------------------------------------------
 
@@ -163,7 +166,7 @@ ALTER TABLE `anggota`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`

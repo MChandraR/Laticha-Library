@@ -17,7 +17,12 @@ include '.includes/header.php';
                 <!-- Input untuk mengunggah gambar -->
                 <div class="mb-3">
                     <label for="formFile" class="form-tabel">Penulis</label>
-                    <input class="form-control" type="text" name="penulis" placeholder="Masukkan nama penulis" accept="image/*">
+                    <input class="form-control" type="text" name="penulis" placeholder="Masukkan nama penulis" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="formFile" class="form-tabel">Sampul Buku</label>
+                    <input class="form-control" type="file" name="sampul" placeholder="Upload gambar sampul buku" accept="image/*" required>
                 </div>
             
                 <!-- Textarea untuk konten postingan -->

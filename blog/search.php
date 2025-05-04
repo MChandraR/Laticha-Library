@@ -230,7 +230,7 @@ include "navbar.php"
 
       ?>
       <div class="card">
-          <img src="/latichalibrary/assets/img/icons/book2.png" alt="Sampul Buku">
+          <img src="../uploads/<?= $row['sampul'] ?>" alt="Sampul Buku" style="object-fit: cover; height: 20vh;">
           <h3 style="color  : #696cff; font-weight : bold; font-size : 1.5rem;" ><?= htmlspecialchars($row['judul_buku']) ?></h3>
           <p style="font-size : 1rem;" >Penulis: <?= htmlspecialchars($row['penulis']) ?></p>
           <a href="pinjam.php?id_buku=<?= $row['id_buku'] ?>" class="btn">Pinjam</a>
